@@ -1,3 +1,8 @@
+/**
+ * @module scenes
+ * 
+ */
+
 module scenes {
     /**
      * Instruction Scene extends scenes.Scene superclass is used to
@@ -109,8 +114,8 @@ module scenes {
             this.setGravity(new THREE.Vector3(0, 0, 0));
             
             //Adding Instruction sound
-            createjs.Sound.stop();
-            createjs.Sound.play("instruction");
+            // createjs.Sound.stop();
+            // createjs.Sound.play("instruction");
 
 
 

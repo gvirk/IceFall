@@ -15,10 +15,8 @@ var config;
         }
         Scene.MENU = 0;
         Scene.INSTRUCTION = 1;
-        Scene.PLAY1 = 2;
-        Scene.PLAY2 = 3;
-        Scene.PLAY3 = 4;
-        Scene.OVER = 5;
+        Scene.PLAY = 2;
+        Scene.OVER = 3;
         return Scene;
     })();
     config.Scene = Scene;

@@ -1,6 +1,10 @@
 module scenes {
-
-export class Scene extends Physijs.Scene {
+    /**
+     * The Scene class is a generic / custom Scene container
+     * 
+     * @class Scene
+     */
+    export class Scene extends Physijs.Scene {
         /**
          * @constructor 
          */
@@ -17,7 +21,7 @@ export class Scene extends Physijs.Scene {
         public start(): void {
 
         }
-
+        
         /**
          * The update method updates the animation loop and other objects
          * 
@@ -25,17 +29,17 @@ export class Scene extends Physijs.Scene {
          * @return void
          */
         public update(): void {
-
+            
         }
-
+        
         /**
          * The resize method is a procedure that sets variables and objects on screen resize
          * 
          * @method resize
          * @return void
          */
-        public resize(): void {
-
+        public resize():void {
+            
         }
     }
 }

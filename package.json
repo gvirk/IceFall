@@ -1,7 +1,7 @@
 {
-  "name": "ice_fall",
-  "version": "2",
-  "description": "Ice Fall",
+  "name": "comp392-lesson10",
+  "version": "1.0.0",
+  "description": "COMP392-Lesson 10 for Centennial College",
   "main": "game.js",
   "dependencies": {
     "typescript": "^1.8.7"
@@ -18,10 +18,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gvirk/IceFall.git"
+    "url": "git+https://github.com/CentennialCollege/COMP392-Lesson10.git"
   },
-  "author": "Gursharnbir Singh",
+  "author": "Tom Tsiliopoulos",
   "license": "MIT",
-  
-  "homepage": "https://github.com/gvirk/IceFall#readme"
+  "bugs": {
+    "url": "https://github.com/CentennialCollege/COMP392-Lesson10/issues"
+  },
+  "homepage": "https://github.com/CentennialCollege/COMP392-Lesson10#readme"
 }

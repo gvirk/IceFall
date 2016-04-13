@@ -1,10 +1,12 @@
 /// <reference path="_reference.ts"/>
+// MAIN GAME FILE
 // THREEJS Aliases
 var Scene = Physijs.Scene;
 var Renderer = THREE.WebGLRenderer;
 var PerspectiveCamera = THREE.PerspectiveCamera;
 var BoxGeometry = THREE.BoxGeometry;
 var CubeGeometry = THREE.CubeGeometry;
+var CylinderGeometry = THREE.CylinderGeometry;
 var PlaneGeometry = THREE.PlaneGeometry;
 var SphereGeometry = THREE.SphereGeometry;
 var Geometry = THREE.Geometry;
@@ -48,9 +50,15 @@ var assets;
 var manifest = [
     { id: "land", src: "../../Assets/audio/Land.wav" },
     { id: "hit", src: "../../Assets/audio/hit.wav" },
+    { id: "enemy", src: "../../Assets/audio/enemy.wav" },
     { id: "coin", src: "../../Assets/audio/coin.mp3" },
-    { id: "fire", src: "../../Assets/audio/Explosion4.wav" },
-    { id: "jump", src: "../../Assets/audio/Jump.wav" }
+    { id: "jump", src: "../../Assets/audio/Jump.wav" },
+    { id: "CompanyLogo", src: "../../Assets/images/CompanyLogo.png" },
+    { id: "InstructionPanel", src: "../../Assets/images/InstructionLabel.png" },
+    { id: "BackButton", src: "../../Assets/images/BackButton.png" },
+    { id: "StartButton", src: "../../Assets/images/StartButton.png" },
+    { id: "PlayAgainButton", src: "../../Assets/images/PlayAgainButton.png" },
+    { id: "InstructionButton", src: "../../Assets/images/InstructionButton.png" }
 ];
 function preload() {
     assets = new createjs.LoadQueue();
@@ -133,23 +141,23 @@ function changeScene() {
             scene = menu;
             console.log("Starting MENU Scene");
             break;
-        case config.Scene.INSTRUCTION:
+        case config.Scene.PLAY:
             // show the PLAY scene
-            instruction = new scenes.Instruction();
-            scene = instruction;
-            console.log("Starting Instruction Scene");
-            break;
-        case config.Scene.PLAY1:
-            // show the PLAY scene
-            play = new scenes.Play1();
+            play = new scenes.Play();
             scene = play;
-            console.log("Starting PLAY1 Scene");
+            console.log("Starting PLAY Scene");
             break;
         case config.Scene.OVER:
             // show the game OVER scene
             over = new scenes.Over();
             scene = over;
             console.log("Starting OVER Scene");
+            break;
+        case config.Scene.INSTRUCTION:
+            // show the Instruction scene
+            instruction = new scenes.Instruction();
+            scene = instruction;
+            console.log("Starting Instruction Scene");
             break;
     }
 }

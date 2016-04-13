@@ -1,7 +1,5 @@
 module objects {
     // KeyboardControls Class +++++++++++++++
-
-
     export class KeyboardControls {
         // PUBLIC INSTANCE VARIABLES ++++++++++++
         public moveForward: boolean;
@@ -19,7 +17,7 @@ module objects {
         }
 
         // PUBLIC METHODS
-
+        
         public onKeyDown(event: KeyboardEvent): void {
             switch (event.keyCode) {
                 case 38: /*up arrow*/

@@ -1,3 +1,7 @@
+/**
+ * @module scenes
+ *
+ */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -92,8 +96,8 @@ var scenes;
             this.name = "Instruction Scene";
             this.setGravity(new THREE.Vector3(0, 0, 0));
             //Adding Instruction sound
-            createjs.Sound.stop();
-            createjs.Sound.play("instruction");
+            // createjs.Sound.stop();
+            // createjs.Sound.play("instruction");
             console.log("Added InstructionPanel to the Scene");
             // Add Company Logo
             this._instructionPanel = new createjs.Bitmap(assets.getResult("InstructionPanel"));

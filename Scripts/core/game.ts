@@ -1,5 +1,6 @@
 /// <reference path="_reference.ts"/>
 
+// MAIN GAME FILE
 
 // THREEJS Aliases
 import Scene = Physijs.Scene;
@@ -7,6 +8,7 @@ import Renderer = THREE.WebGLRenderer;
 import PerspectiveCamera = THREE.PerspectiveCamera;
 import BoxGeometry = THREE.BoxGeometry;
 import CubeGeometry = THREE.CubeGeometry;
+import CylinderGeometry = THREE.CylinderGeometry;
 import PlaneGeometry = THREE.PlaneGeometry;
 import SphereGeometry = THREE.SphereGeometry;
 import Geometry = THREE.Geometry;
@@ -44,7 +46,7 @@ var scoreValue: number;
 var livesValue: number;
 var highScoreValue: number = 0;
 
-var play: scenes.Play1;
+var play: scenes.Play;
 var menu: scenes.Menu;
 var over: scenes.Over;
 var instruction: scenes.Instruction;
@@ -52,13 +54,19 @@ var instruction: scenes.Instruction;
 var stats: Stats;
 var canvas: HTMLElement;
 var assets: createjs.LoadQueue;
- var manifest = [
-        { id: "land", src: "../../Assets/audio/Land.wav" },
-        { id: "hit", src: "../../Assets/audio/hit.wav" },
-        { id: "coin", src: "../../Assets/audio/coin.mp3" },
-        { id: "fire", src: "../../Assets/audio/Explosion4.wav" },
-        { id: "jump", src: "../../Assets/audio/Jump.wav" }
-    ];
+var manifest = [
+    { id: "land", src: "../../Assets/audio/Land.wav" },
+    { id: "hit", src: "../../Assets/audio/hit.wav" },
+    { id: "enemy", src: "../../Assets/audio/enemy.wav" },
+    { id: "coin", src: "../../Assets/audio/coin.mp3" },
+    { id: "jump", src: "../../Assets/audio/Jump.wav" },
+    { id: "CompanyLogo", src: "../../Assets/images/CompanyLogo.png" },
+    { id: "InstructionPanel", src: "../../Assets/images/InstructionLabel.png" },
+    { id: "BackButton", src: "../../Assets/images/BackButton.png" },
+    { id: "StartButton", src: "../../Assets/images/StartButton.png" },
+    { id: "PlayAgainButton", src: "../../Assets/images/PlayAgainButton.png" },
+    { id: "InstructionButton", src: "../../Assets/images/InstructionButton.png" }
+];
 
 function preload(): void {
     assets = new createjs.LoadQueue();
@@ -158,19 +166,13 @@ function changeScene(): void {
             // show the MENU scene
             menu = new scenes.Menu();
             scene = menu;
-            console.log("Starting MENU Scene");
+            console.log("Starting MENU Scene"); 
             break;
-        case config.Scene.INSTRUCTION:
+        case config.Scene.PLAY:
             // show the PLAY scene
-            instruction = new scenes.Instruction();
-            scene = instruction;
-            console.log("Starting Instruction Scene");
-            break;
-        case config.Scene.PLAY1:
-            // show the PLAY scene
-            play = new scenes.Play1();
+            play = new scenes.Play();
             scene = play;
-            console.log("Starting PLAY1 Scene");
+            console.log("Starting PLAY Scene");
             break;
         case config.Scene.OVER:
             // show the game OVER scene
@@ -178,6 +180,12 @@ function changeScene(): void {
             scene = over;
             console.log("Starting OVER Scene");
             break;
+        case config.Scene.INSTRUCTION:
+           // show the Instruction scene
+           instruction = new scenes.Instruction();
+           scene = instruction;
+           console.log("Starting Instruction Scene");
+           break;
     }
 }
 
