@@ -10,7 +10,10 @@ module config {
         public static MENU: number = 0;
         public static INSTRUCTION: number = 1;
         public static PLAY: number = 2;
-        public static OVER: number = 3;
+        public static PLAY2: number = 3;
+        public static PLAY3: number = 4;
+        public static EXIT: number = 5;
+        public static OVER: number = 6;
         
     }
     

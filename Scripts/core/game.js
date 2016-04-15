@@ -58,7 +58,21 @@ var manifest = [
     { id: "BackButton", src: "../../Assets/images/BackButton.png" },
     { id: "StartButton", src: "../../Assets/images/StartButton.png" },
     { id: "PlayAgainButton", src: "../../Assets/images/PlayAgainButton.png" },
-    { id: "InstructionButton", src: "../../Assets/images/InstructionButton.png" }
+    { id: "InstructionButton", src: "../../Assets/images/InstructionButton.png" },
+    { id: "mine", src: "../../Assets/audio/Mine.mp3" },
+    { id: "menu", src: "../../Assets/audio/menu.mp3" },
+    { id: "instruction", src: "../../Assets/audio/instructions.mp3" },
+    { id: "gameOver", src: "../../Assets/audio/gameOver.mp3" },
+    { id: "CompanyLogo", src: "../../Assets/images/CompanyLogo.png" },
+    { id: "InstructionPanel1", src: "../../Assets/images/InstructionLabel1.png" },
+    { id: "InstructionPanel2", src: "../../Assets/images/InstructionLabel2.png" },
+    { id: "InstructionPanel3", src: "../../Assets/images/InstructionLabel3.png" },
+    { id: "ExitPanel", src: "../../Assets/images/ExitPanel.png" },
+    { id: "BackButton", src: "../../Assets/images/BackButton.png" },
+    { id: "StartButton", src: "../../Assets/images/StartButton.png" },
+    { id: "PlayAgainButton", src: "../../Assets/images/PlayAgainButton.png" },
+    { id: "PlayButton", src: "../../Assets/images/PlayButton.png" },
+    { id: "ExitButton", src: "../../Assets/images/ExitButton.png" }
 ];
 function preload() {
     assets = new createjs.LoadQueue();
