@@ -14,6 +14,7 @@ var config;
         function Scene() {
         }
         Scene.MENU = 0;
+<<<<<<< HEAD
         Scene.INSTRUCTION1 = 1;
         Scene.INSTRUCTION2 = 2;
         Scene.INSTRUCTION3 = 3;
@@ -22,6 +23,14 @@ var config;
         Scene.GAMESCENE3 = 6;
         Scene.OVER = 7;
         Scene.EXIT = 8;
+=======
+        Scene.INSTRUCTION = 1;
+        Scene.PLAY = 2;
+        Scene.PLAY2 = 3;
+        Scene.PLAY3 = 4;
+        Scene.EXIT = 5;
+        Scene.OVER = 6;
+>>>>>>> origin/master
         return Scene;
     })();
     config.Scene = Scene;

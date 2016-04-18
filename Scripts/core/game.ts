@@ -50,6 +50,7 @@ var play: scenes.Play;
 var gameScene2: scenes.GameScene2;
 var gameScene3: scenes.GameScene3;
 var menu: scenes.Menu;
+var exit: scenes.Exit;
 var over: scenes.Over;
 var exit: scenes.Exit;
 var instruction1: scenes.Instruction1;
@@ -74,8 +75,26 @@ var manifest = [
     { id: "StartButton", src: "../../Assets/images/StartButton.png" },
     { id: "PlayAgainButton", src: "../../Assets/images/PlayAgainButton.png" },
     { id: "InstructionButton", src: "../../Assets/images/InstructionButton.png" },
+<<<<<<< HEAD
     { id: "menu", src: "../../Assets/audio/menu.mp3" },
     { id: "game1_background", src: "../../Assets/audio/game1_background.mp3" }    
+=======
+    { id: "mine", src: "../../Assets/audio/Mine.mp3" },
+   
+    { id: "menu", src: "../../Assets/audio/menu.mp3" },
+    { id: "instruction", src: "../../Assets/audio/instructions.mp3" },
+    { id: "gameOver", src: "../../Assets/audio/gameOver.mp3" },
+    { id: "CompanyLogo", src: "../../Assets/images/CompanyLogo.png" },
+    { id: "InstructionPanel1", src: "../../Assets/images/InstructionLabel1.png" },
+    { id: "InstructionPanel2", src: "../../Assets/images/InstructionLabel2.png" },
+    { id: "InstructionPanel3", src: "../../Assets/images/InstructionLabel3.png" },
+    { id: "ExitPanel", src: "../../Assets/images/ExitPanel.png" },
+    { id: "BackButton", src: "../../Assets/images/BackButton.png" },
+    { id: "StartButton", src: "../../Assets/images/StartButton.png" },
+    { id: "PlayAgainButton", src: "../../Assets/images/PlayAgainButton.png" },
+    { id: "PlayButton", src: "../../Assets/images/PlayButton.png" },
+    { id: "ExitButton", src: "../../Assets/images/ExitButton.png" }
+>>>>>>> origin/master
 ];
 
 function preload(): void {

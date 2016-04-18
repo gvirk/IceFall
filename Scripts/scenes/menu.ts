@@ -20,6 +20,8 @@ module scenes {
         private _gameLabel: createjs.Text;
         private _startButton: createjs.Bitmap;
         private _instructionButton: createjs.Bitmap;
+        private _exitButton: createjs.Bitmap;
+        
         
 
         private spotLight: SpotLight;
@@ -98,6 +100,7 @@ module scenes {
             this.add(this.spotLight);
             console.log("Added spotLight to scene");
         }
+<<<<<<< HEAD
         
         /**
          * Add a background score to the scene
@@ -109,7 +112,13 @@ module scenes {
             createjs.Sound.stop();
             createjs.Sound.play("menu");
         }
+=======
+        public sound(): void {
+                    createjs.Sound.stop();
+                    createjs.Sound.play("menu");
+>>>>>>> origin/master
 
+                }
         /**
          * This method adds a coin to the scene
          * 
@@ -148,7 +157,10 @@ module scenes {
             this.setGravity(new THREE.Vector3(0, 0, 0));
             
             this.sound();
+<<<<<<< HEAD
             
+=======
+>>>>>>> origin/master
             // Add Game Label
             this._gameLabel = new createjs.Text(
                 " ICE FALL",
@@ -180,7 +192,7 @@ module scenes {
             this._startButton.y = (config.Screen.HEIGHT * 0.5) + 100;
             this._stage.addChild(this._startButton);
             console.log("Added Start Button to the Scene");
-
+            
             this._startButton.on("mouseover", (event: createjs.MouseEvent) => {
                 event.target.alpha = 0.7;
             });
@@ -215,7 +227,28 @@ module scenes {
                 currentScene = config.Scene.EXIT;
                 changeScene();
             });
+this._exitButton = new createjs.Bitmap(assets.getResult("ExitButton"));
+            this._exitButton.regX = this._exitButton.getBounds().width * 0.5;
+            this._exitButton.regY = this._exitButton.getBounds().height * 0.5;
+            this._exitButton.x = config.Screen.WIDTH * 0.75;
+            this._exitButton.y = (config.Screen.HEIGHT * 0.6) + 100;
+            this._stage.addChild(this._exitButton);
+            console.log("Added ExitButton to the Scene");
+            
+            this._exitButton.on("mouseover", (event: createjs.MouseEvent) => {
+                event.target.alpha = 0.7;
+                
+            });
 
+            this._exitButton.on("mouseout", (event: createjs.MouseEvent) => {
+                event.target.alpha = 1;
+            });
+
+            this._exitButton.on("click", (event: createjs.MouseEvent) => {
+                
+                currentScene = config.Scene.EXIT;
+                changeScene();
+            });
             // Add Spot Light to the scene
             this.addSpotLight();
 
