@@ -37,17 +37,22 @@ module scenes {
         private enemyMaterial: Physijs.Material;
         private enemy: Physijs.Mesh;
         
-        private enemy2Geometry: SphereGeometry;
-        private enemy2Material: Physijs.Material;
-        private enemy2: Physijs.Mesh;
+        // private enemy2Geometry: SphereGeometry;
+        // private enemy2Material: Physijs.Material;
+        // private enemy2: Physijs.Mesh;
         
-        private enemy3Geometry: SphereGeometry;
-        private enemy3Material: Physijs.Material;
-        private enemy3: Physijs.Mesh;
+        // private enemy3Geometry: SphereGeometry;
+        // private enemy3Material: Physijs.Material;
+        // private enemy3: Physijs.Mesh;
 
-        private playerGeometry: CubeGeometry;
+       private playerGeometry: CubeGeometry;
         private playerMaterial: Physijs.Material;
         private player: Physijs.Mesh;
+        
+        private player1Geometry: CubeGeometry;
+        private player1Material: Physijs.Material;
+        private player1: Physijs.Mesh;
+
         private keyboardControls: objects.KeyboardControls;
         private mouseControls: objects.MouseControls;
         private isGrounded: boolean;
@@ -169,7 +174,7 @@ module scenes {
             this.spotLight.position.set(20, 40, -15);
             this.spotLight.castShadow = true;
             this.spotLight.intensity = 2;
-            this.spotLight.lookAt(new Vector3(0, 0, 0));
+            this.spotLight.lookAt(new Vector3(0, 10, 5));
             this.spotLight.shadowCameraNear = 2;
             this.spotLight.shadowCameraFar = 200;
             this.spotLight.shadowCameraLeft = -5;
@@ -182,6 +187,18 @@ module scenes {
             this.spotLight.name = "Spot Light";
             this.add(this.spotLight);
             console.log("Added spotLight to scene");
+        }
+        
+        /**
+         * Add a background score to the scene
+         * 
+         * @method sound
+         * @return void
+         */
+        public sound(): void {
+            createjs.Sound.stop();
+            createjs.Sound.play("game1_background");
+            createjs.Sound.volume=0.5;
         }
 
         /**
@@ -272,18 +289,18 @@ module scenes {
          * @method addEnemy2
          * @return void
          */
-        private addEnemy2(): void {
-            // Enemy2 Object
-            this.enemy2Geometry = new SphereGeometry(1, 32, 1);
-            this.enemy2Geometry.scale(1, 1.5, 1);
-            this.enemy2Material = Physijs.createMaterial(new LambertMaterial({ map: THREE.ImageUtils.loadTexture("../../Assets/images/ice-texture.jpg") }), 0.4, 0);
-            this.enemy2 = new Physijs.SphereMesh(this.enemy2Geometry, this.enemy2Material, 2);
-            this.enemy2.position.set(0, 60,  Math.floor(Math.random() * 20) - 10);
-            this.enemy2.castShadow = true;
-            this.enemy2.name = "Enemy2";
-            this.add(this.enemy2);
-            console.log("Added Enemy2 to Scene");
-        }
+        // private addEnemy2(): void {
+        //     // Enemy2 Object
+        //     this.enemy2Geometry = new SphereGeometry(1, 32, 1);
+        //     this.enemy2Geometry.scale(1, 1.5, 1);
+        //     this.enemy2Material = Physijs.createMaterial(new LambertMaterial({ map: THREE.ImageUtils.loadTexture("../../Assets/images/ice-texture.jpg") }), 0.4, 0);
+        //     this.enemy2 = new Physijs.SphereMesh(this.enemy2Geometry, this.enemy2Material, 2);
+        //     this.enemy2.position.set(0, 60,  Math.floor(Math.random() * 20) - 10);
+        //     this.enemy2.castShadow = true;
+        //     this.enemy2.name = "Enemy2";
+        //     this.add(this.enemy2);
+        //     console.log("Added Enemy2 to Scene");
+        // }
         
         /**
          * Adds the enemy3 object to the scene
@@ -291,18 +308,18 @@ module scenes {
          * @method addEnemy3
          * @return void
          */
-        private addEnemy3(): void {
-            // Enemy3 Object
-            this.enemy3Geometry = new SphereGeometry(1, 32, 1);
-            this.enemy3Geometry.scale(1, 1.5, 1);
-            this.enemy3Material = Physijs.createMaterial(new LambertMaterial({ map: THREE.ImageUtils.loadTexture("../../Assets/images/ice-texture.jpg") }), 0.4, 0);
-            this.enemy3 = new Physijs.SphereMesh(this.enemy3Geometry, this.enemy3Material, 2);
-            this.enemy3.position.set(0, 60,  Math.floor(Math.random() * 20) - 10);
-            this.enemy3.castShadow = true;
-            this.enemy3.name = "Enemy3";
-            this.add(this.enemy3);
-            console.log("Added Enemy3 to Scene");
-        }
+        // private addEnemy3(): void {
+        //     // Enemy3 Object
+        //     this.enemy3Geometry = new SphereGeometry(1, 32, 1);
+        //     this.enemy3Geometry.scale(1, 1.5, 1);
+        //     this.enemy3Material = Physijs.createMaterial(new LambertMaterial({ map: THREE.ImageUtils.loadTexture("../../Assets/images/ice-texture.jpg") }), 0.4, 0);
+        //     this.enemy3 = new Physijs.SphereMesh(this.enemy3Geometry, this.enemy3Material, 2);
+        //     this.enemy3.position.set(0, 60,  Math.floor(Math.random() * 20) - 10);
+        //     this.enemy3.castShadow = true;
+        //     this.enemy3.name = "Enemy3";
+        //     this.add(this.enemy3);
+        //     console.log("Added Enemy3 to Scene");
+        // }
 
         /**
          * Adds the player controller to the scene
@@ -312,14 +329,40 @@ module scenes {
          */
         private addPlayer(): void {
             // Player Object
-            this.playerGeometry = new BoxGeometry(2, 4, 2);
+            this.playerGeometry = new BoxGeometry(1.5,3,1.5);
             this.playerMaterial = Physijs.createMaterial(new LambertMaterial({ color: 0x00ff00 }), 0.4, 0);
 
             this.player = new Physijs.BoxMesh(this.playerGeometry, this.playerMaterial, 1);
-            this.player.position.set(0, 30, 10);
+            this.player.position.set(0, 10, -100);
+            this.player.rotation.set(0, 3.14159, 0);
             this.player.receiveShadow = true;
             this.player.castShadow = true;
             this.player.name = "Player";
+            
+            
+            // Player left arm Object
+            this.player1Geometry = new BoxGeometry(2,.5,.5);
+            this.player1Material = Physijs.createMaterial(new LambertMaterial({ color: 0x00ff00 }), 0.4, 0);
+            this.player1 = new Physijs.BoxMesh(this.player1Geometry, this.player1Material, 1);
+            this.player1.position.set(-1,0,0);
+            this.player1.rotation.set(0, 3.14159, 0);
+            this.player1.receiveShadow = true;
+            this.player1.castShadow = true;
+            this.player1.name = "Player";
+            this.player.add(this.player1);
+            
+            // Player right arm Object
+            this.player1Geometry = new BoxGeometry(2,.5,.5);
+            this.player1Material = Physijs.createMaterial(new LambertMaterial({ color: 0x00ff00 }), 0.4, 0);
+            this.player1 = new Physijs.BoxMesh(this.player1Geometry, this.player1Material, 1);
+            this.player1.position.set(1,0,0);
+            this.player1.rotation.set(0, 3.14159, 0);
+            this.player1.receiveShadow = true;
+            this.player1.castShadow = true;
+            this.player1.name = "Player";
+            this.player.add(this.player1);
+            
+            
             this.add(this.player);
             console.log("Added Player to Scene");
         }
@@ -521,12 +564,12 @@ module scenes {
          * @method enemy2Look
          * @remove void
          */
-        private enemy2MoveAndLook(): void {
-            this.enemy2.lookAt(this.player.position);
-            var direction = new Vector3(0, 0, 5);
-            direction.applyQuaternion(this.enemy2.quaternion);
-            this.enemy2.applyCentralForce(direction);
-        }
+        // private enemy2MoveAndLook(): void {
+        //     this.enemy2.lookAt(this.player.position);
+        //     var direction = new Vector3(0, 0, 5);
+        //     direction.applyQuaternion(this.enemy2.quaternion);
+        //     this.enemy2.applyCentralForce(direction);
+        // }
         
         /**
          * Have the enemy3 look at the player
@@ -534,12 +577,12 @@ module scenes {
          * @method enemy3Look
          * @remove void
          */
-        private enemy3MoveAndLook(): void {
-            this.enemy3.lookAt(this.player.position);
-            var direction = new Vector3(0, 0, 5);
-            direction.applyQuaternion(this.enemy3.quaternion);
-            this.enemy3.applyCentralForce(direction);
-        }
+        // private enemy3MoveAndLook(): void {
+        //     this.enemy3.lookAt(this.player.position);
+        //     var direction = new Vector3(0, 0, 5);
+        //     direction.applyQuaternion(this.enemy3.quaternion);
+        //     this.enemy3.applyCentralForce(direction);
+        // }
 
         // PUBLIC METHODS +++++++++++++++++++++++++++++++++++++++++++
 
@@ -552,7 +595,7 @@ module scenes {
         public start(): void {
             // setup the class context to use within events
             var self = this;
-            
+            this.sound();
             // Set Up Scoreboard
             this.setupScoreboard();
 
@@ -603,10 +646,10 @@ module scenes {
             this.addEnemy();
             
             // Add Enemy2 Object
-            this.addEnemy2();
+            // this.addEnemy2();
             
              // Add Enemy3 Object
-            this.addEnemy3();
+            // this.addEnemy3();
 
             // Add player controller
             this.addPlayer();
@@ -629,6 +672,11 @@ module scenes {
                     self.setCoinPosition(eventObject);
                     scoreValue += 100;
                     self.scoreLabel.text = "SCORE: " + scoreValue;
+                    if(scoreValue===500)
+                    {
+                        currentScene = config.Scene.INSTRUCTION2;
+                        changeScene();
+                    }
                 }
                 
                 if (eventObject.name === "DeathGround") {
@@ -653,20 +701,28 @@ module scenes {
                     }
                 }
                 
-                if(eventObject.name === "Enemy") {
-                    var enemySound = createjs.Sound.play("enemy");
-                    enemySound.volume = 0.1;
+                if(eventObject.name === "Enemy" || eventObject.name === "Enemy2" || eventObject.name === "Enemy3") {
+                    createjs.Sound.play("enemy");
+                    livesValue--;
+                    if (livesValue <= 0) {
+                        // Exit Pointer Lock
+                        document.exitPointerLock();
+                        self.children = []; // an attempt to clean up
+                        self.player.remove(camera);
+
+                        // Play the Game Over Scene
+                        currentScene = config.Scene.OVER;
+                        changeScene();
+                    } else {
+                        // otherwise reset my player and update Lives
+                        self.livesLabel.text = "LIVES: " + livesValue;
+                        self.remove(self.player);
+                        self.player.position.set(0, 30, 10);
+                        self.player.rotation.set(0, 0, 0);
+                        self.add(self.player);
+                    }
                 }
-                
-                if(eventObject.name === "Enemy2") {
-                    var enemy2Sound = createjs.Sound.play("enemy");
-                    enemy2Sound.volume = 0.1;
-                }
-                
-                if(eventObject.name === "Enemy3") {
-                    var enemy3Sound = createjs.Sound.play("enemy");
-                    enemy3Sound.volume = 0.1;
-                }
+               
             }.bind(self));
             
             // Collision check for DeathPlane
@@ -681,35 +737,70 @@ module scenes {
                 // if the enemy falls off the ground, reset
                 if(otherObject.name === "Enemy") {
                     self.remove(otherObject);
-                    self.enemy.position.set(0, 60,  Math.floor(Math.random() * 20) - 10);
+                    self.enemy.position.set(0, 60,  Math.floor(Math.random() * 50) - 10);
                     self.add(self.enemy);
                     self.enemy.setLinearVelocity(new Vector3(0, 0, 0));
                     self.enemyMoveAndLook();
                 }
                 
-                // if the enemy2 falls off the ground, reset
-                if(otherObject.name === "Enemy2") {
+                // // if the enemy2 falls off the ground, reset
+                // if(otherObject.name === "Enemy2") {
+                //     self.remove(otherObject);
+                //     self.enemy2.position.set( 0, 60,  Math.floor(Math.random() * 20) - 10);
+                //     self.add(self.enemy2);
+                //     self.enemy2.setLinearVelocity(new Vector3(0, 0, 0));
+                //     self.enemy2MoveAndLook();
+                // }
+                
+                // // if the enemy3 falls off the ground, reset
+                // if(otherObject.name === "Enemy3") {
+                //     self.remove(otherObject);
+                //     self.enemy3.position.set(0, 60,  Math.floor(Math.random() * 20) - 10);
+                //     self.add(self.enemy3);
+                //     self.enemy3.setLinearVelocity(new Vector3(0, 0, 0));
+                //     self.enemy3MoveAndLook();
+                // }
+            }.bind(self));
+            
+            // Collision check for Ground
+            this.ground.addEventListener('collision', function(otherObject){
+                
+                // if the enemy falls on the the ground, reset
+                if(otherObject.name === "Enemy") {
                     self.remove(otherObject);
-                    self.enemy2.position.set( 0, 60,  Math.floor(Math.random() * 20) - 10);
-                    self.add(self.enemy2);
-                    self.enemy2.setLinearVelocity(new Vector3(0, 0, 0));
-                    self.enemy2MoveAndLook();
+                    createjs.Sound.play("ice_hit");
+                    self.enemy.position.set(0, 60,  Math.floor(Math.random() * 50) - 10);
+                    self.add(self.enemy);
+                    self.enemy.setLinearVelocity(new Vector3(0, 0, 0));
+                    self.enemyMoveAndLook();
                 }
                 
-                // if the enemy3 falls off the ground, reset
-                if(otherObject.name === "Enemy3") {
-                    self.remove(otherObject);
-                    self.enemy3.position.set(0, 60,  Math.floor(Math.random() * 20) - 10);
-                    self.add(self.enemy3);
-                    self.enemy3.setLinearVelocity(new Vector3(0, 0, 0));
-                    self.enemy3MoveAndLook();
-                }
+                // // if the enemy2 falls on the ground, reset
+                // if(otherObject.name === "Enemy2") {
+                //     self.remove(otherObject);
+                //     createjs.Sound.play("ice_hit");                    
+                //     self.enemy2.position.set( 0, 60,  Math.floor(Math.random() * 20) - 10);
+                //     self.add(self.enemy2);
+                //     self.enemy2.setLinearVelocity(new Vector3(0, 0, 0));
+                //     self.enemy2MoveAndLook();
+                // }
+                
+                // // if the enemy3 falls on the ground, reset
+                // if(otherObject.name === "Enemy3") {
+                //     self.remove(otherObject);
+                //     createjs.Sound.play("ice_hit");                    
+                //     self.enemy3.position.set(0, 60,  Math.floor(Math.random() * 20) - 10);
+                //     self.add(self.enemy3);
+                //     self.enemy3.setLinearVelocity(new Vector3(0, 0, 0));
+                //     self.enemy3MoveAndLook();
+                // }
             }.bind(self));
             
             // create parent-child relationship with camera and player
+            
+            camera.rotation.set(-0.45, 0, 0);
+            camera.position.set(0, 15, 20);
             this.player.add(camera);
-            camera.rotation.set(0, 0, 0);
-            camera.position.set(0, 1, 0);
 
             this.simulate();
         }
@@ -721,8 +812,8 @@ module scenes {
          * @return void
          */
         private cameraLook(): void {
-            var zenith: number = THREE.Math.degToRad(90);
-            var nadir: number = THREE.Math.degToRad(-90);
+            var zenith: number = THREE.Math.degToRad(-20);
+            var nadir: number = THREE.Math.degToRad(-20);
 
             var cameraPitch: number = camera.rotation.x + this.mouseControls.pitch;
 
@@ -744,8 +835,8 @@ module scenes {
             this.checkControls();
 
             this.enemyMoveAndLook();
-            this.enemy2MoveAndLook();
-            this.enemy3MoveAndLook();            
+            //this.enemy2MoveAndLook();
+            //this.enemy3MoveAndLook();            
 
             this.stage.update();
 

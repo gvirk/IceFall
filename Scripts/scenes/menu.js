@@ -85,6 +85,16 @@ var scenes;
             console.log("Added spotLight to scene");
         };
         /**
+         * Add a background score to the scene
+         *
+         * @method sound
+         * @return void
+         */
+        Menu.prototype.sound = function () {
+            createjs.Sound.stop();
+            createjs.Sound.play("menu");
+        };
+        /**
          * This method adds a coin to the scene
          *
          * @method addCoinMesh
@@ -116,6 +126,7 @@ var scenes;
             // Scene changes for Physijs
             this.name = "Menu Scene";
             this.setGravity(new THREE.Vector3(0, 0, 0));
+            this.sound();
             // Add Game Label
             this._gameLabel = new createjs.Text(" ICE FALL", "130px Algerian", "#000000");
             this._gameLabel.regX = this._gameLabel.getMeasuredWidth() * 0.5;
@@ -146,7 +157,7 @@ var scenes;
                 event.target.alpha = 1.0;
             });
             this._startButton.on("click", function (event) {
-                currentScene = config.Scene.PLAY;
+                currentScene = config.Scene.INSTRUCTION1;
                 changeScene();
             });
             // Add Instruction Button
@@ -164,7 +175,7 @@ var scenes;
                 event.target.alpha = 1.0;
             });
             this._instructionButton.on("click", function (event) {
-                currentScene = config.Scene.INSTRUCTION;
+                currentScene = config.Scene.EXIT;
                 changeScene();
             });
             // Add Spot Light to the scene

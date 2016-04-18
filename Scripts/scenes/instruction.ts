@@ -99,6 +99,17 @@ module scenes {
             console.log("Added spotLight to scene");
         }
 
+        /**
+         * Add a background score to the scene
+         * 
+         * @method sound
+         * @return void
+         */
+        public sound(): void {
+            createjs.Sound.stop();
+            createjs.Sound.play("game1_background");
+            createjs.Sound.volume=0.5;
+        }
 
         // PUBLIC METHODS +++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -112,7 +123,7 @@ module scenes {
             // Scene changes for Physijs
             this.name = "Instruction Scene";
             this.setGravity(new THREE.Vector3(0, 0, 0));
-            
+            this.sound();
             //Adding Instruction sound
             // createjs.Sound.stop();
             // createjs.Sound.play("instruction");

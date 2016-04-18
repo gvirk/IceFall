@@ -98,6 +98,17 @@ module scenes {
             this.add(this.spotLight);
             console.log("Added spotLight to scene");
         }
+        
+        /**
+         * Add a background score to the scene
+         * 
+         * @method sound
+         * @return void
+         */
+        public sound(): void {
+            createjs.Sound.stop();
+            createjs.Sound.play("menu");
+        }
 
         /**
          * This method adds a coin to the scene
@@ -135,6 +146,8 @@ module scenes {
             // Scene changes for Physijs
             this.name = "Menu Scene";
             this.setGravity(new THREE.Vector3(0, 0, 0));
+            
+            this.sound();
             
             // Add Game Label
             this._gameLabel = new createjs.Text(
@@ -177,7 +190,7 @@ module scenes {
             });
 
             this._startButton.on("click", (event: createjs.MouseEvent) => {
-                currentScene = config.Scene.PLAY;
+                currentScene = config.Scene.INSTRUCTION1;
                 changeScene();
             });
             
@@ -199,7 +212,7 @@ module scenes {
             });
 
             this._instructionButton.on("click", (event: createjs.MouseEvent) => {
-                currentScene = config.Scene.INSTRUCTION;
+                currentScene = config.Scene.EXIT;
                 changeScene();
             });
 
