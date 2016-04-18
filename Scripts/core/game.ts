@@ -47,10 +47,14 @@ var livesValue: number;
 var highScoreValue: number = 0;
 
 var play: scenes.Play;
+var gameScene2: scenes.GameScene2;
+var gameScene3: scenes.GameScene3;
 var menu: scenes.Menu;
-var exit: scenes.Exit;
 var over: scenes.Over;
-var instruction: scenes.Instruction;
+var exit: scenes.Exit;
+var instruction1: scenes.Instruction1;
+var instruction2: scenes.Instruction2;
+var instruction3: scenes.Instruction3;
 
 var stats: Stats;
 var canvas: HTMLElement;
@@ -58,30 +62,20 @@ var assets: createjs.LoadQueue;
 var manifest = [
     { id: "land", src: "../../Assets/audio/Land.wav" },
     { id: "hit", src: "../../Assets/audio/hit.wav" },
+    { id: "ice_hit", src: "../../Assets/audio/ice_hit.wav" },    
     { id: "enemy", src: "../../Assets/audio/enemy.wav" },
     { id: "coin", src: "../../Assets/audio/coin.mp3" },
     { id: "jump", src: "../../Assets/audio/Jump.wav" },
     { id: "CompanyLogo", src: "../../Assets/images/CompanyLogo.png" },
-    { id: "InstructionPanel", src: "../../Assets/images/InstructionLabel.png" },
+    { id: "InstructionPanel1", src: "../../Assets/images/InstructionsStage1.png" },
+    { id: "InstructionPanel2", src: "../../Assets/images/InstructionsStage2.png" },
+    { id: "InstructionPanel3", src: "../../Assets/images/InstructionsStage3.png" },
     { id: "BackButton", src: "../../Assets/images/BackButton.png" },
     { id: "StartButton", src: "../../Assets/images/StartButton.png" },
     { id: "PlayAgainButton", src: "../../Assets/images/PlayAgainButton.png" },
     { id: "InstructionButton", src: "../../Assets/images/InstructionButton.png" },
-    { id: "mine", src: "../../Assets/audio/Mine.mp3" },
-   
     { id: "menu", src: "../../Assets/audio/menu.mp3" },
-    { id: "instruction", src: "../../Assets/audio/instructions.mp3" },
-    { id: "gameOver", src: "../../Assets/audio/gameOver.mp3" },
-    { id: "CompanyLogo", src: "../../Assets/images/CompanyLogo.png" },
-    { id: "InstructionPanel1", src: "../../Assets/images/InstructionLabel1.png" },
-    { id: "InstructionPanel2", src: "../../Assets/images/InstructionLabel2.png" },
-    { id: "InstructionPanel3", src: "../../Assets/images/InstructionLabel3.png" },
-    { id: "ExitPanel", src: "../../Assets/images/ExitPanel.png" },
-    { id: "BackButton", src: "../../Assets/images/BackButton.png" },
-    { id: "StartButton", src: "../../Assets/images/StartButton.png" },
-    { id: "PlayAgainButton", src: "../../Assets/images/PlayAgainButton.png" },
-    { id: "PlayButton", src: "../../Assets/images/PlayButton.png" },
-    { id: "ExitButton", src: "../../Assets/images/ExitButton.png" }
+    { id: "game1_background", src: "../../Assets/audio/game1_background.mp3" }    
 ];
 
 function preload(): void {
@@ -196,12 +190,42 @@ function changeScene(): void {
             scene = over;
             console.log("Starting OVER Scene");
             break;
-        case config.Scene.INSTRUCTION:
-           // show the Instruction scene
-           instruction = new scenes.Instruction();
-           scene = instruction;
-           console.log("Starting Instruction Scene");
+        case config.Scene.INSTRUCTION1:
+           // show the Instruction1 scene
+           instruction1 = new scenes.Instruction1();
+           scene = instruction1;
+           console.log("Starting Instruction1 Scene");
            break;
+        case config.Scene.INSTRUCTION2:
+           // show the Instruction2 scene
+           instruction2 = new scenes.Instruction2();
+           scene = instruction2;
+           console.log("Starting Instruction2 Scene");
+           break;
+        case config.Scene.INSTRUCTION3:
+           // show the Instruction3 scene
+           instruction3 = new scenes.Instruction3();
+           scene = instruction3;
+           console.log("Starting Instruction3 Scene");
+           break;
+        case config.Scene.EXIT:
+           // show the exit scene
+           exit = new scenes.Exit();
+           scene = exit;
+           console.log("Starting exit Scene");
+           break;
+        case config.Scene.GAMESCENE2:
+            // show the GameScene2 scene
+            gameScene2 = new scenes.GameScene2();
+            scene = gameScene2;
+            console.log("Starting GameScene2 Scene");
+            break;
+        case config.Scene.GAMESCENE3:
+            // show the GameScene3 scene
+            gameScene3 = new scenes.GameScene3();
+            scene = gameScene3;
+            console.log("Starting GameScene3 Scene");
+            break;
     }
 }
 

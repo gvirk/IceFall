@@ -14,12 +14,14 @@ var config;
         function Scene() {
         }
         Scene.MENU = 0;
-        Scene.INSTRUCTION = 1;
-        Scene.PLAY = 2;
-        Scene.PLAY2 = 3;
-        Scene.PLAY3 = 4;
-        Scene.EXIT = 5;
-        Scene.OVER = 6;
+        Scene.INSTRUCTION1 = 1;
+        Scene.INSTRUCTION2 = 2;
+        Scene.INSTRUCTION3 = 3;
+        Scene.PLAY = 4;
+        Scene.GAMESCENE2 = 5;
+        Scene.GAMESCENE3 = 6;
+        Scene.OVER = 7;
+        Scene.EXIT = 8;
         return Scene;
     })();
     config.Scene = Scene;

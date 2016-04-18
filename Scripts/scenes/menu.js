@@ -84,6 +84,12 @@ var scenes;
             this.add(this.spotLight);
             console.log("Added spotLight to scene");
         };
+        /**
+         * Add a background score to the scene
+         *
+         * @method sound
+         * @return void
+         */
         Menu.prototype.sound = function () {
             createjs.Sound.stop();
             createjs.Sound.play("menu");
@@ -151,7 +157,7 @@ var scenes;
                 event.target.alpha = 1.0;
             });
             this._startButton.on("click", function (event) {
-                currentScene = config.Scene.PLAY;
+                currentScene = config.Scene.INSTRUCTION1;
                 changeScene();
             });
             // Add Instruction Button
@@ -169,23 +175,6 @@ var scenes;
                 event.target.alpha = 1.0;
             });
             this._instructionButton.on("click", function (event) {
-                currentScene = config.Scene.INSTRUCTION;
-                changeScene();
-            });
-            this._exitButton = new createjs.Bitmap(assets.getResult("ExitButton"));
-            this._exitButton.regX = this._exitButton.getBounds().width * 0.5;
-            this._exitButton.regY = this._exitButton.getBounds().height * 0.5;
-            this._exitButton.x = config.Screen.WIDTH * 0.75;
-            this._exitButton.y = (config.Screen.HEIGHT * 0.6) + 100;
-            this._stage.addChild(this._exitButton);
-            console.log("Added ExitButton to the Scene");
-            this._exitButton.on("mouseover", function (event) {
-                event.target.alpha = 0.7;
-            });
-            this._exitButton.on("mouseout", function (event) {
-                event.target.alpha = 1;
-            });
-            this._exitButton.on("click", function (event) {
                 currentScene = config.Scene.EXIT;
                 changeScene();
             });

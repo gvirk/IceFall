@@ -1,13 +1,13 @@
 {
-  "name": "comp392-lesson10",
+  "name": "ice-fall",
   "authors": [
-    "Tom Tsiliopoulos <tsiliopoulos@hotmail.com>"
+    "Gursharnbir Singh <bir.virk90@gmail.com>"
   ],
-  "description": "COMP392 Lesson 9 for Advanced Graphics",
+  "description": "Ice Fall",
   "main": "",
   "moduleType": [],
   "license": "MIT",
-  "homepage": "https://github.com/CentennialCollege/COMP392-Lesson10",
+  "homepage": "https://github.com/gvirk/IceFall",
   "ignore": [
     "**/.*",
     "node_modules",
